@@ -10,6 +10,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
   override val viewModelClass = HomeViewModel::class.java
 
+  override fun bindViewModel() {
+    binding.vm = viewModel
+  }
+
   companion object {
 
     fun newInstance(): HomeFragment {

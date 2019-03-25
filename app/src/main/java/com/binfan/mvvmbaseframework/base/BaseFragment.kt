@@ -22,10 +22,11 @@ abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment
 
   protected abstract val viewModelClass: Class<VM>
 
+  protected abstract fun bindViewModel()
+
   protected lateinit var viewModel: VM
 
   protected lateinit var binding: BD
-
 
   override fun onCreateView(
     inflater: LayoutInflater,
@@ -33,7 +34,11 @@ abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment
     savedInstanceState: Bundle?
   ): View {
     binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
+
     initViewModel()
+
+    bindViewModel()
+
     return binding.root
   }
 
