@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">#008577</color>
-  <color name="colorPrimaryDark">#00574B</color>
-  <color name="colorAccent">#D81B60</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    //generic colors
+    <color name="generic_grey_color">#323232</color>
+    <color name="generic_red_color">#DB0007</color>
+    //generic colors end
+
 </resources>
