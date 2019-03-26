@@ -1,6 +1,7 @@
 package com.binfan.mvvmbaseframework.base
 
 import android.arch.lifecycle.ViewModel
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
@@ -8,8 +9,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.arch.lifecycle.ViewModelProviders
-import com.binfan.mvvmbaseframework.R
+import com.binfan.mvvmbaseframework.MainActivity
 
 /**
  * Base Fragment Class which must be inherited by every fragment
@@ -63,15 +63,10 @@ abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment
   fun changeFragment(
     fragment: Fragment,
     tag: String = TAG,
-    addToBackStack: Boolean = true,
-    containerViewId: Int = R.id.fragment_container
+    addToBackStack: Boolean = true
   ) {
-    val fm = fragmentManager
-    val fragmentTransaction = fm?.beginTransaction()
-    if (addToBackStack) {
-      fragmentTransaction?.addToBackStack(tag)
+    if (activity is MainActivity) {
+      (activity as MainActivity).changeFragment(fragment, tag, addToBackStack)
     }
-    fragmentTransaction?.replace(containerViewId, fragment, tag)
-      ?.commit()
   }
 }

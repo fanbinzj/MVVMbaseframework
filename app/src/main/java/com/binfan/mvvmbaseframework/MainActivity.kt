@@ -22,7 +22,7 @@ class MainActivity : BaseActivity() {
 		changeFragment(homeFragment, homeFragment.TAG)
 	}
 
-	private fun changeFragment(
+	fun changeFragment(
 		fragment: Fragment,
 		tag: String? = null,
 		addToBackStack: Boolean = true,
