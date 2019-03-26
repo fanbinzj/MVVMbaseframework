@@ -18,11 +18,13 @@ import com.binfan.mvvmbaseframework.R
  */
 abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment() {
 
-	protected abstract val layoutResId: Int
+  protected abstract val layoutResId: Int
 
   protected abstract val viewModelClass: Class<VM>
 
   protected abstract fun bindViewModel()
+
+  val TAG = this.javaClass.simpleName
 
   protected lateinit var viewModel: VM
 
@@ -50,14 +52,18 @@ abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment
 
   open fun bindViews() {}
 
-  protected fun <T : ViewModel> createViewModel(vModelClass: Class<T>, isShared: Boolean = false): T {
-    return ViewModelProviders.of(this).get(vModelClass)
+  protected fun <T : ViewModel> createViewModel(
+    vModelClass: Class<T>,
+    isShared: Boolean = false
+  ): T {
+    return ViewModelProviders.of(this)
+      .get(vModelClass)
   }
 
   fun changeFragment(
     fragment: Fragment,
+    tag: String = TAG,
     addToBackStack: Boolean = true,
-    tag: String? = null,
     containerViewId: Int = R.id.fragment_container
   ) {
     val fm = fragmentManager

@@ -18,13 +18,14 @@ class MainActivity : BaseActivity() {
 	}
 
 	fun navigateToHome() {
-		changeFragment(HomeFragment.newInstance())
+		val homeFragment = HomeFragment.newInstance()
+		changeFragment(homeFragment, homeFragment.TAG)
 	}
 
 	private fun changeFragment(
 		fragment: Fragment,
-		addToBackStack: Boolean = true,
 		tag: String? = null,
+		addToBackStack: Boolean = true,
 		containerViewId: Int = R.id.fragment_container
 	) {
 		val fm = supportFragmentManager
