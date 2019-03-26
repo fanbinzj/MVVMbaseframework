@@ -3,6 +3,7 @@ package com.binfan.mvvmbaseframework.home
 import com.binfan.mvvmbaseframework.R
 import com.binfan.mvvmbaseframework.base.BaseFragment
 import com.binfan.mvvmbaseframework.databinding.FragmentHomeBinding
+import com.binfan.mvvmbaseframework.listScreen.ListFragment
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
@@ -12,6 +13,10 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
   override fun bindViewModel() {
     binding.vm = viewModel
+  }
+
+  override fun bindViews() {
+    binding.navigateToListScreenButton.setOnClickListener { changeFragment(ListFragment.newInstance()) }
   }
 
   companion object {

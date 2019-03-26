@@ -39,12 +39,16 @@ abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment
 
     bindViewModel()
 
+    bindViews()
+
     return binding.root
   }
 
   fun initViewModel() {
     viewModel = createViewModel(viewModelClass)
   }
+
+  open fun bindViews() {}
 
   protected fun <T : ViewModel> createViewModel(vModelClass: Class<T>, isShared: Boolean = false): T {
     return ViewModelProviders.of(this).get(vModelClass)

@@ -4,27 +4,19 @@
     <data>
         <variable
             name="vm"
-            type="com.binfan.mvvmbaseframework.home.HomeViewModel" />
+            type="com.binfan.mvvmbaseframework.listScreen.ListViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center"
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.cardNumber}"/>
-
-        <Button
-            android:id="@+id/navigate_to_list_screen_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Click me to go list screen"
-            />
+            android:text="@{`Total items: ` +vm.totalCount}"/>
 
     </LinearLayout>
 

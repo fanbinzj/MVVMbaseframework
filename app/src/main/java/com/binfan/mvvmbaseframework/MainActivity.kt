@@ -18,11 +18,10 @@ class MainActivity : BaseActivity() {
 	}
 
 	fun navigateToHome() {
-		val homeFragment = HomeFragment.newInstance()
-		changeFragment(homeFragment)
+		changeFragment(HomeFragment.newInstance())
 	}
 
-	fun changeFragment(
+	private fun changeFragment(
 		fragment: Fragment,
 		addToBackStack: Boolean = true,
 		tag: String? = null,
