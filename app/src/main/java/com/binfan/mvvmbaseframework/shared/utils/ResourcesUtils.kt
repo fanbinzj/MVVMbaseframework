@@ -30,6 +30,10 @@ class ResourcesUtils(val context: Context){
         return context.getString(resId)
     }
 
+    fun getStringArray(resId: Int): Array<String> {
+        return context.resources.getStringArray(resId)
+    }
+
     fun getDrawable(resId: Int): Drawable? {
         return ContextCompat.getDrawable(context, resId)
     }
