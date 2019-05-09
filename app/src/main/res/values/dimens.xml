@@ -5,4 +5,12 @@
 
     <dimen name="normal_left_right_content_margin">@dimen/dp_16</dimen>
 
+    <dimen name="generic_left_right_dp">15dp</dimen>
+    <dimen name="generic_top_margin">20dp</dimen>
+
+    <dimen name="shape_button_rounded_corner_radius">5dp</dimen>
+
+    //font size
+    <dimen name="generic_font_size">16sp</dimen>
+
 </resources>

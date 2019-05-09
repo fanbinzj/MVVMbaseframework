@@ -19,7 +19,7 @@ class MainActivity : BaseActivity() {
 
 	fun navigateToHome() {
 		val homeFragment = HomeFragment.newInstance()
-		changeFragment(homeFragment, homeFragment.TAG)
+		changeFragment(homeFragment, homeFragment.backStackTag)
 	}
 
 	fun changeFragment(

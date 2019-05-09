@@ -1,4 +1,4 @@
-package com.binfan.mvvmbaseframework.shared
+package com.binfan.mvvmbaseframework.architect
 
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.

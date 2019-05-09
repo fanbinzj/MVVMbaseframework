@@ -1,72 +1,84 @@
 package com.binfan.mvvmbaseframework.base
 
 import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.binfan.mvvmbaseframework.MainActivity
+import com.binfan.mvvmbaseframework.MainActivityViewModel
+import com.binfan.mvvmbaseframework.architect.Router
+import com.binfan.mvvmbaseframework.shared.utils.FactoryUtils
 
 /**
  * Base Fragment Class which must be inherited by every fragment
  *
  * @author Bin Fan (binfannz@gmail.com)
  */
-abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel, BD : ViewDataBinding> : BaseFragmentWithTag() {
 
-  protected abstract val layoutResId: Int
+	//abstract members
+	protected abstract val layoutResId: Int
 
-  protected abstract val viewModelClass: Class<VM>
+	protected abstract val viewModelClass: Class<VM>
 
-  protected abstract fun bindViewModel()
+	protected abstract fun bindViewModel()
 
-  val TAG = this.javaClass.simpleName
 
-  protected lateinit var viewModel: VM
+	//fields
+	protected lateinit var viewModel: VM
 
-  protected lateinit var binding: BD
+	protected lateinit var binding: BD
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
+	private var mainActivityViewModel: MainActivityViewModel? = null
 
-    initViewModel()
+	open var isShowToolbar = true
 
-    bindViewModel()
+	override fun onCreateView(
+		inflater: LayoutInflater,
+		container: ViewGroup?,
+		savedInstanceState: Bundle?
+	): View {
+		binding = DataBindingUtil.inflate(inflater, layoutResId, container, false)
 
-    bindViews()
+		initViewModel()
 
-    return binding.root
-  }
+		bindViewModel()
 
-  fun initViewModel() {
-    viewModel = createViewModel(viewModelClass)
-  }
+		bindViews()
 
-  open fun bindViews() {}
+		bindData()
 
-  protected fun <T : ViewModel> createViewModel(
-    vModelClass: Class<T>,
-    isShared: Boolean = false
-  ): T {
-    return ViewModelProviders.of(this)
-      .get(vModelClass)
-  }
+		binding.setLifecycleOwner(this)
 
-  fun changeFragment(
-    fragment: Fragment,
-    tag: String = TAG,
-    addToBackStack: Boolean = true
-  ) {
-    if (activity is MainActivity) {
-      (activity as MainActivity).changeFragment(fragment, tag, addToBackStack)
-    }
-  }
+		return binding.root
+	}
+
+	open fun initViewModel() {
+		viewModel = createViewModel(viewModelClass)
+	}
+
+	open fun bindViews() {
+	}
+
+	open fun bindData() {}
+
+	protected fun <T : ViewModel> createViewModel(vModelClass: Class<T>, isShared: Boolean = false): T {
+		return FactoryUtils.createViewModel(vModelClass, isShared, activity, this)
+	}
+
+	protected fun changeFragment(
+		fragment: BaseFragmentWithTag,
+		tag: String? = fragment.backStackTag,
+		addToBackStack: Boolean = true,
+		keepOneInstance: Boolean = true
+	) {
+		Router.getInstance().changeFragment(fragment, tag, addToBackStack, keepOnInstance = keepOneInstance)
+	}
+
+	protected fun popBackStack() {
+		Router.getInstance().popBackStack()
+	}
 }
+

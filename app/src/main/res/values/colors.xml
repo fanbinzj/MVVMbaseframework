@@ -8,6 +8,13 @@
     //generic colors
     <color name="generic_grey_color">#323232</color>
     <color name="generic_red_color">#DB0007</color>
+    <color name="generic_yellow_color">#FABF00</color>
+
+    <color name="generic_text_grey_color">@color/generic_grey_color</color>
     //generic colors end
+
+    <color name="dialog_yellow">#FFBC0D</color>
+    <color name="dialog_grey">#999999</color>
+    <color name="dialog_dark_grey">@color/generic_grey_color</color>
 
 </resources>
