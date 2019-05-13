@@ -5,10 +5,12 @@
 
 	<string name="set">Set</string>
 	<string name="cancel">Cancel</string>
+	<string name="more_about_slect_meal">More about select meal</string>
 
 	<string-array name="home_screen_button_name_array">
 		<item>List inner adapter example</item>
 		<item>List rxjava callback example</item>
 		<item>Api call example</item>
+		<item>Dynamic include with data binding</item>
 	</string-array>
 </resources>

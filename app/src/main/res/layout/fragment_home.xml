@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.binfan.mvvmbaseframework.home.HomeViewModel" />
+            type="com.binfan.mvvmbaseframework.ui.home.HomeViewModel" />
     </data>
 
     <android.support.v7.widget.RecyclerView

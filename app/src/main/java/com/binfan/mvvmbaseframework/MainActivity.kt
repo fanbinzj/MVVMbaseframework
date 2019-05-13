@@ -1,10 +1,10 @@
 package com.binfan.mvvmbaseframework
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import com.binfan.mvvmbaseframework.architect.Router
 import com.binfan.mvvmbaseframework.base.BaseActivity
-import com.binfan.mvvmbaseframework.home.HomeFragment
-import kotlinx.android.synthetic.main.activity_main.*
+import com.binfan.mvvmbaseframework.ui.home.HomeFragment
+import kotlinx.android.synthetic.main.activity_main.toolbar
 
 class MainActivity : BaseActivity() {
 
@@ -19,20 +19,6 @@ class MainActivity : BaseActivity() {
 
 	fun navigateToHome() {
 		val homeFragment = HomeFragment.newInstance()
-		changeFragment(homeFragment, homeFragment.backStackTag)
-	}
-
-	fun changeFragment(
-		fragment: Fragment,
-		tag: String? = null,
-		addToBackStack: Boolean = true,
-		containerViewId: Int = R.id.fragment_container
-	) {
-		val fm = supportFragmentManager
-		val fragmentTransaction = fm?.beginTransaction()
-		if (addToBackStack) {
-			fragmentTransaction?.addToBackStack(tag)
-		}
-		fragmentTransaction?.replace(containerViewId, fragment, tag)?.commit()
+		Router.getInstance().changeFragment(homeFragment, homeFragment.backStackTag)
 	}
 }

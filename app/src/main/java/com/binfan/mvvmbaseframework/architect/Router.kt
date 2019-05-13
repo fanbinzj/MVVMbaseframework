@@ -15,7 +15,7 @@ class Router(val supportFragmentManager: FragmentManager) {
             fragment: Fragment,
             tag: String? = fragment.tag,
             addToBackStack: Boolean = true,
-            containerViewId: Int = R.id.container,
+            containerViewId: Int = R.id.fragment_container,
             keepOnInstance: Boolean = true
     ) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()

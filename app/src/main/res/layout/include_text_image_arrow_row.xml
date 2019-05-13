@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <data>
+    <variable
+        name="titleName"
+        type="String"
+        />
+    <variable
+        name="titleDescription"
+        type="String"
+        />
+    <variable
+        name="imageDrawable"
+        type="android.graphics.drawable.Drawable"
+        />
+    <variable
+        name="isDisabled"
+        type="Boolean"
+        />
+    <import type="android.view.View"/>
+  </data>
+
+  <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+
+    <RelativeLayout
+        android:id="@+id/pick_up_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <TextView
+          android:id="@+id/title_tv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_centerVertical="true"
+          android:fontFamily="@font/arch_sans_bold"
+          android:text="@{titleName}"
+          android:textColor="@color/generic_text_grey_color"
+          android:textSize="18sp"
+          />
+
+      <TextView
+          android:id="@+id/description_tv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_centerInParent="true"
+          android:fontFamily="@font/arch_sans_regular"
+          android:paddingTop="@dimen/generic_top_margin"
+          android:text="@{titleDescription}"
+          android:textColor="@color/generic_red_color"
+          android:textSize="12sp"
+          android:visibility="@{titleDescription == null ? View.GONE : View.VISIBLE}"
+          />
+
+      <ImageView
+          android:id="@+id/middle_image_iv"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_toLeftOf="@+id/right_arrow_ic"
+          android:layout_toRightOf="@+id/title_tv"
+          android:src="@{imageDrawable}"
+          />
+
+      <ImageView
+          android:id="@+id/right_arrow_ic"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:src="@drawable/yellow_arrow_ic"
+          android:visibility="@{isDisabled ? View.INVISIBLE : View.VISIBLE}"
+          />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/disabled_transparent_color"
+        android:visibility="@{isDisabled ? View.VISIBLE : View.GONE}"
+        android:clickable="true"
+        />
+
+  </FrameLayout>
+
+</layout>
+

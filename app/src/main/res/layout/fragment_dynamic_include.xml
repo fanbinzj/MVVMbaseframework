@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	>
+	<data>
+		<variable
+			name="vm"
+			type="com.binfan.mvvmbaseframework.ui.dynamicInclude.DynamicIncludeViewModel"
+			/>
+		<import type="android.view.View"/>
+	</data>
+
+	<LinearLayout
+		android:id="@+id/pickup_type_top_layout_rl"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_margin="@dimen/generic_left_right_dp"
+		android:orientation="vertical"
+		>
+
+		<include
+			layout="@layout/include_text_image_arrow_row"
+			android:id="@+id/eat_in_include_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/generic_top_margin"
+			app:imageDrawable="@{@drawable/btn_breakfast_menu}"
+			app:titleName="@{@string/more_about_slect_meal}"
+			/>
+
+		<View
+			android:id="@+id/divider_view"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginTop="@dimen/generic_top_margin"
+			android:background="@color/divider"
+			/>
+
+		<include
+			layout="@layout/include_text_image_arrow_row"
+			android:id="@+id/take_out_include"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/generic_top_margin"
+			app:imageDrawable="@{@drawable/btn_regular_menu}"
+			app:isDisabled="@{true}"
+			app:titleDescription="@{`this is a description`}"
+			app:titleName="@{`This is bottom title`}"
+			/>
+
+	</LinearLayout>
+
+
+</layout>

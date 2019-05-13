@@ -17,4 +17,8 @@
     <color name="dialog_grey">#999999</color>
     <color name="dialog_dark_grey">@color/generic_grey_color</color>
 
+    <color name="disabled_transparent_color">#88FFFFFF</color>
+
+    <color name="divider">#CCCCCC</color>
+
 </resources>

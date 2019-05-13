@@ -1,4 +1,4 @@
-package com.binfan.mvvmbaseframework.home
+package com.binfan.mvvmbaseframework.ui.home
 
 import android.arch.lifecycle.MutableLiveData
 import com.binfan.mvvmbaseframework.base.BaseViewModel

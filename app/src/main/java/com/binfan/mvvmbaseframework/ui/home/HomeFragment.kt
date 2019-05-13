@@ -1,4 +1,4 @@
-package com.binfan.mvvmbaseframework.home
+package com.binfan.mvvmbaseframework.ui.home
 
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
@@ -11,6 +11,8 @@ import com.binfan.mvvmbaseframework.databinding.ListGenericItemTextOnlyBinding
 import com.binfan.mvvmbaseframework.shared.utils.ResourcesUtils
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import com.binfan.mvvmbaseframework.ui.dynamicInclude.DynamicIncludeFragment
+import com.binfan.mvvmbaseframework.ui.listScreen.ListFragment
 
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
@@ -82,7 +84,8 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 			itemBinding.itemNameTv.text = titleName
 			itemBinding.itemRootLlLayout.setOnClickListener {
 				when (position) {
-//					0 -> changeFragment()
+					0 -> changeFragment(ListFragment.newInstance())
+					3 -> changeFragment(DynamicIncludeFragment.newInstance())
 				}
 			}
 		}

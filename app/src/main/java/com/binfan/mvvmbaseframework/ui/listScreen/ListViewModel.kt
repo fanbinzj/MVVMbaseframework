@@ -1,4 +1,4 @@
-package com.binfan.mvvmbaseframework.listScreen
+package com.binfan.mvvmbaseframework.ui.listScreen
 
 import android.arch.lifecycle.MutableLiveData
 import com.binfan.mvvmbaseframework.base.BaseViewModel
